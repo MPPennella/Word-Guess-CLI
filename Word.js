@@ -7,6 +7,12 @@ let Word = function(word) {
         return this.wordArray.join("")
     }
 
+    this.checkForLetter = (letter) => {
+        for (let i=0; i<this.wordArray.length; i++) {
+            this.wordArray[i].checkCharacter(letter)
+        }
+    }
+
 }
 
 function makeLetter(letter) {
