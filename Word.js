@@ -8,15 +8,14 @@ let Word = function(word) {
     }
 
     this.checkForLetter = (letter) => {
-        for (let i=0; i<this.wordArray.length; i++) {
-            this.wordArray[i].checkCharacter(letter)
-        }
+        this.wordArray.map((index)=>{
+            index.checkCharacter(letter)
+        })
     }
 
 }
 
 function makeLetter(letter) {
-    console.log(letter)
     return new Letter(letter)
 }
 
