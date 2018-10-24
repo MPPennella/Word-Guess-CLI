@@ -13,6 +13,17 @@ let Word = function(word) {
         })
     }
 
+    // Checks if all letters in word have been guessed
+    this.checkAllGuessed = () => {
+        let allGuessed = true
+        
+        for (let i=0; i<this.wordArray.length; i++) {
+            if (!this.wordArray[i].isGuessed) allGuessed = false;
+        }
+        
+        return allGuessed;
+    }
+
 }
 
 function makeLetter(letter) {
