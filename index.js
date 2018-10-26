@@ -1,14 +1,17 @@
 const inquirer = require("inquirer");
 const Word = require("./Word.js");
 
-let someWord = "peanut"
-let wordToGuess = new Word(someWord.toUpperCase());
+// Array of possible words to guess
+let possibleWords = ["peanut","butter","jelly", "time"]
 
-let guessesLeft = 10;
-let guessedLetters = [];
-let badGuesses = [];
+// Game variables
+let guessesLeft
+let guessedLetters
+let badGuesses
+let wordToGuess
 
 // Begin game sequence
+initializeGame();
 guessLetter();
 
 function guessLetter() {
@@ -67,4 +70,18 @@ function guessLetter() {
 
         }
     })
+}
+
+// Initializes game state
+function initializeGame() {
+    guessesLeft = 10;
+    guessedLetters = [];
+    badGuesses = [];
+    wordToGuess = randomWord();
+}
+
+// Returns random word from array of possible words
+function randomWord() {
+    let rand = Math.floor( Math.random()*possibleWords.length )
+    return new Word(possibleWords[rand])
 }

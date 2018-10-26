@@ -1,7 +1,7 @@
 let Letter = require("./Letter.js");
 
 let Word = function(word) {
-    this.wordArray = [...word].map(makeLetter)
+    this.wordArray = [...word.toUpperCase()].map(makeLetter)
 
     // Returns string representation of word with placeholders for letters not guessed yet
     this.toString = () => {
