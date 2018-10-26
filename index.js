@@ -15,13 +15,16 @@ initializeGame();
 guessLetter();
 
 function guessLetter() {
+    console.log(`Word: ${wordToGuess}`);
+    console.log(`Bad guesses: ${badGuesses.join(", ")}`)
+
     // Prompt for A-Z letter entry
     inquirer.prompt({
         message: "Guess a letter (A-Z):",
         name: "letter"
     }).then( response => {
         let letter = response.letter.trim().toUpperCase();
-        // console.log(letter);
+        console.log();
 
         // Check for valid entry
         if (letter.length==1 && letter>="A" && letter<="Z") {
@@ -37,6 +40,7 @@ function guessLetter() {
                     // If word is fully guessed, display victory message and exit
                     if (wordToGuess.checkAllGuessed()) {
                         console.log("You won!")
+                        console.log(`Word was: ${wordToGuess.revealWord()}`)
                         return;
                     }
                 } else {
@@ -46,7 +50,6 @@ function guessLetter() {
                     // Add letter to list of bad guesses
                     badGuesses.push(letter);
                     badGuesses.sort();
-                    console.log(`Bad guesses: ${badGuesses.join(", ")}`)
                     
                     console.log(`Word did not contain '${letter}'`)
                     console.log(`You have ${guessesLeft} wrong guesses left`)
@@ -59,16 +62,15 @@ function guessLetter() {
                     }
                 }
 
-                console.log(`Word: ${wordToGuess}`);
+                // console.log(`Word: ${wordToGuess}`);
             }   else {
                 console.log("Letter already guessed");
-            }    
-            guessLetter();     
+            }   
         } else {
             console.log("Invalid letter, please input a valid letter (A-Z)")
-            guessLetter();
-
         }
+        console.log();
+        guessLetter();
     })
 }
 
