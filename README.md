@@ -8,9 +8,9 @@ Gameplay follows a standard hangman-style progression:
 * The game will pick a random word from the list of known words
 * The player will be shown the word, but with all letters replaced by underscores
 * The player will be prompted to pick a letter
-  * If the letter was correctly guessed, fill in all instances of that letter in the word
-  * If the letter was incorrectly guessed, decrement the number of guesses remaining and add letter to display of wrong guesses
-  * If letter was already guess or an invalid input was entered, gives error and lets player guess again
+  * If the letter was correctly guessed, fills in all instances of that letter in the word
+  * If the letter was incorrectly guessed, decrements the number of guesses remaining and adds letter to display of wrong guesses
+  * If letter was already guessed or an invalid input was entered, gives error message and lets player guess again without penalty
 * The player wins if they guess all the letters before running out of wrong guesses, and loses if they run out of guesses before completing the word
 
 ## Creating a custom word list
