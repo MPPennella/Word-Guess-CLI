@@ -4,6 +4,9 @@ const Word = require("./Word.js");
 let someWord = "peanut"
 let wordToGuess = new Word(someWord.toUpperCase());
 
+let guessesLeft = 10;
+
+// Begin game sequence
 guessLetter();
 
 function guessLetter() {
@@ -20,7 +23,18 @@ function guessLetter() {
             // console.log("Valid letter")
 
             // Check if letter is in word and update word
-            wordToGuess.checkForLetter(letter);
+            let letterFound = wordToGuess.checkForLetter(letter);
+
+            if (letterFound) {
+                console.log(`Word contained '${letter}'`)
+            } else {
+                // Decrement guesses
+                guessesLeft--
+                
+                console.log(`Word did not contain '${letter}'`)
+                console.log(`You have ${guessesLeft} wrong guesses left`)
+            }
+
             console.log(wordToGuess.toString());
 
             // If word is not fully guessed, guess again

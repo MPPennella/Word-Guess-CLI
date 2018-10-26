@@ -8,9 +8,11 @@ let Word = function(word) {
     }
 
     this.checkForLetter = (letter) => {
+        let letterFound = false;
         this.wordArray.map((index)=>{
-            index.checkCharacter(letter)
+            if (index.checkCharacter(letter)) letterFound=true;
         })
+        return letterFound;
     }
 
     // Checks if all letters in word have been guessed

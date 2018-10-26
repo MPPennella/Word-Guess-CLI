@@ -10,7 +10,7 @@ let Letter = function(letter) {
     }
 
     this.checkCharacter = (chkLetter) => {
-        if (chkLetter == this.value) this.isGuessed = true;
+        if (chkLetter == this.value) return this.isGuessed = true;
     }
 
 }
