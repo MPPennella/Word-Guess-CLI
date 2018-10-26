@@ -1,12 +1,11 @@
 let Letter = function(letter) {
     this.value = letter;
-    this.placeholder = "_";
 
     this.isGuessed = false;
 
     this.toString =  () => {
         if (this.isGuessed) return this.value;
-        else return this.placeholder;
+        else return "_";
     }
 
     this.checkCharacter = (chkLetter) => {
