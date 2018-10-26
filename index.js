@@ -1,18 +1,26 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
 const Word = require("./Word.js");
 
-// Array of possible words to guess
-let possibleWords = ["peanut","butter","jelly", "time"]
-
+// Array for possible words to guess
+let possibleWords
 // Game variables
+let wordToGuess
 let guessesLeft
 let guessedLetters
 let badGuesses
-let wordToGuess
 
-// Begin game sequence
-initializeGame();
-guessLetter();
+// Load word list
+fs.readFile("wordList.txt","UTF8",(error, data) => {
+    if (error) throw error;
+
+    // Split list of text items on line breaks
+    possibleWords = data.split(/\r?\n/g)
+
+    // Begin game sequence
+    initializeGame();
+    guessLetter();
+})
 
 function guessLetter() {
     console.log(`Word: ${wordToGuess}`);
