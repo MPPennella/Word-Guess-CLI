@@ -35,7 +35,7 @@ function guessLetter() {
                 console.log(`You have ${guessesLeft} wrong guesses left`)
             }
 
-            console.log(wordToGuess.toString());
+            console.log(`Word: ${wordToGuess}`);
 
             // If word is not fully guessed, guess again
             if(!wordToGuess.checkAllGuessed()) guessLetter();
