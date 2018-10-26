@@ -5,6 +5,7 @@ let someWord = "peanut"
 let wordToGuess = new Word(someWord.toUpperCase());
 
 let guessesLeft = 10;
+let guessedLetters = [];
 
 // Begin game sequence
 guessLetter();
@@ -20,39 +21,43 @@ function guessLetter() {
 
         // Check for valid entry
         if (letter.length==1 && letter>="A" && letter<="Z") {
-            // console.log("Valid letter")
+            if ( !guessedLetters.includes(letter) ) {
+                // Add letter to list of guesses
+                guessedLetters.push(letter);
 
-            // Check if letter is in word and update word
-            let letterFound = wordToGuess.checkForLetter(letter);
+                // Check if letter is in word and update word
+                let letterFound = wordToGuess.checkForLetter(letter);
 
-            if (letterFound) {
-                console.log(`Word contained '${letter}'`)
-                // If word is fully guessed, display victory message and exit
-                if (wordToGuess.checkAllGuessed()) {
-                    console.log("You won!")
-                    return;
+                if (letterFound) {
+                    console.log(`Word contained '${letter}'`)
+                    // If word is fully guessed, display victory message and exit
+                    if (wordToGuess.checkAllGuessed()) {
+                        console.log("You won!")
+                        return;
+                    }
+                } else {
+                    // Decrement guesses
+                    guessesLeft--
+                    
+                    console.log(`Word did not contain '${letter}'`)
+                    console.log(`You have ${guessesLeft} wrong guesses left`)
+
+                    // If no guesses left, display defeat message and exit
+                    if (guessesLeft<=0) {
+                        console.log("You lost!")
+                        console.log(`Word was: ${wordToGuess.revealWord()}`)
+                        return;
+                    }
                 }
-            } else {
-                // Decrement guesses
-                guessesLeft--
-                
-                console.log(`Word did not contain '${letter}'`)
-                console.log(`You have ${guessesLeft} wrong guesses left`)
 
-                // If no guesses left, display defeat message and exit
-                if (guessesLeft<=0) {
-                    console.log("You lost!")
-                    console.log(`Word was: ${wordToGuess.revealWord()}`)
-                    return;
-                }
-            }
-
-            console.log(`Word: ${wordToGuess}`);
-            guessLetter();
-            
+                console.log(`Word: ${wordToGuess}`);
+            }   else {
+                console.log("Letter already guessed");
+            }    
+            guessLetter();     
         } else {
-            console.log("Invalid letter")
-            // Ask if they want to try again
+            console.log("Invalid letter, please input a valid letter (A-Z)")
+            guessLetter();
 
         }
     })
