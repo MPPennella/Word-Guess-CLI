@@ -6,6 +6,7 @@ let wordToGuess = new Word(someWord.toUpperCase());
 
 let guessesLeft = 10;
 let guessedLetters = [];
+let badGuesses = [];
 
 // Begin game sequence
 guessLetter();
@@ -36,8 +37,13 @@ function guessLetter() {
                         return;
                     }
                 } else {
-                    // Decrement guesses
+                    // Decrement guesses left
                     guessesLeft--
+
+                    // Add letter to list of bad guesses
+                    badGuesses.push(letter);
+                    badGuesses.sort();
+                    console.log(`Bad guesses: ${badGuesses.join(", ")}`)
                     
                     console.log(`Word did not contain '${letter}'`)
                     console.log(`You have ${guessesLeft} wrong guesses left`)
