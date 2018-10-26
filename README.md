@@ -10,7 +10,7 @@ Gameplay follows a standard hangman-style progression:
 * The player will be prompted to pick a letter
   * If the letter was correctly guessed, fill in all instances of that letter in the word
   * If the letter was incorrectly guessed, decrement the number of guesses remaining and add letter to display of wrong guesses
-  * If letter was already guess or an invalid input was entered, gives error and let player guess again
+  * If letter was already guess or an invalid input was entered, gives error and lets player guess again
 * The player wins if they guess all the letters before running out of wrong guesses, and loses if they run out of guesses before completing the word
 
 ## Creating a custom word list
