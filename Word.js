@@ -3,6 +3,7 @@ let Letter = require("./Letter.js");
 let Word = function(word) {
     this.wordArray = [...word].map(makeLetter)
 
+    // Returns string representation of word with placeholders for letters not guessed yet
     this.toString = () => {
         return this.wordArray.join("")
     }
@@ -25,6 +26,14 @@ let Word = function(word) {
         
         return allGuessed;
     }
+
+    // Returns string containing stored word
+    this.revealWord = () => {
+        let word = this.wordArray.map( (letter) => {            return letter.value
+        }).join("")
+        return word;
+    }
+
 
 }
 

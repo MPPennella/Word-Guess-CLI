@@ -27,20 +27,29 @@ function guessLetter() {
 
             if (letterFound) {
                 console.log(`Word contained '${letter}'`)
+                // If word is fully guessed, display victory message and exit
+                if (wordToGuess.checkAllGuessed()) {
+                    console.log("You won!")
+                    return;
+                }
             } else {
                 // Decrement guesses
                 guessesLeft--
                 
                 console.log(`Word did not contain '${letter}'`)
                 console.log(`You have ${guessesLeft} wrong guesses left`)
+
+                // If no guesses left, display defeat message and exit
+                if (guessesLeft<=0) {
+                    console.log("You lost!")
+                    console.log(`Word was: ${wordToGuess.revealWord()}`)
+                    return;
+                }
             }
 
             console.log(`Word: ${wordToGuess}`);
-
-            // If word is not fully guessed, guess again
-            if(!wordToGuess.checkAllGuessed()) guessLetter();
-            //Otherwise, player has won
-            else console.log("You won!")
+            guessLetter();
+            
         } else {
             console.log("Invalid letter")
             // Ask if they want to try again
